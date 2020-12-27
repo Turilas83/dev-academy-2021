@@ -5,16 +5,32 @@ const app = express();
 
 var names = require(__dirname + "/names.json")
 
-app.get("/", function(req, res){
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get("/most-popular", function(req, res){
   res.sendFile(__dirname + "/index.html");
   // sort by value
   names.names.sort(function (a, b) {
     return( b.amount - a.amount);
   });
   console.log(names);
+  CountOfNames()
 });
 
-app.get("/alpha", function(req, res){
+app.post("/search", function(req, res){
+  const nameToSearch = req.body.nameSearch;
+  for (var key of names.names) {
+    if (key.name === nameToSearch) {
+      console.log(key.amount);
+      res.write("<p>Found " + key.amount + " workers named " + nameToSearch + "</p>");
+      res.send();
+    }
+  }
+
+});
+
+app.get("/alphabetical-order", function(req, res){
   res.sendFile(__dirname + "/index.html");
   // sort by name
   names.names.sort(function(a, b) {
@@ -30,6 +46,14 @@ app.get("/alpha", function(req, res){
     return 0;
   });
   console.log(names);
+  CountOfNames();
+});
+
+app.listen(3000, function(){
+  console.log("Server is running on port 3000");
+});
+
+function CountOfNames() {
   var count = 0;
   for (var key of names.names) {
     if (key.amount) {
@@ -37,19 +61,4 @@ app.get("/alpha", function(req, res){
     }
   }
   console.log(count);
-
-  for (var key of names.names) {
-    if (key.name === "Timo") {
-      console.log(key.amount);
-    }
-  }
-});
-
-
-app.post("/", function(req, res){
-
-});
-
-app.listen(3000, function(){
-  console.log("Server is running on port 3000");
-});
+};
