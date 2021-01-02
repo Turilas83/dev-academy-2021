@@ -7,7 +7,7 @@ function Count() {
   // Fetch count of names
   const fetchUrl = async () => {
     try {
-      const response = await fetch("http://localhost:9000/names/count");
+      const response = await fetch("http://localhost:5000/names/count");
       console.log(response);
       const json = await response.json();
       setCount(json.count);

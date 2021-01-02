@@ -4,10 +4,10 @@ function ListNames(props) {
     const [names, setEmployees] = useState({});
     const[error, setError] = useState('Fetching...');
 
-    // Fettch list of names, sort names by given parameter
+    // Fetch list of names, sort names by given parameter
     const fetchUrl = async () => {
         try {
-            const response = await fetch("http://localhost:9000/names/" + props.sort);
+            const response = await fetch("http://localhost:5000/names/" + props.sort);
             console.log(response);
             const json = await response.json();
             setEmployees(json.names);
