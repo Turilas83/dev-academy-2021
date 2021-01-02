@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 
 function Search () {
     const [employee, setEmployee] = useState( {
-        name: '',
-        amount: ''
+        name: "",
+        amount: ""
     } );
-    const[error, setError] = useState('');
-    const[name, setName] = useState('');
+    const[error, setError] = useState("");
+    const[name, setName] = useState("");
 
     // Fetch JSON with given name as parameter
     const fetchUrl = async () => {
         try {
-            const response = await fetch('/names/search/' + name);
+            const response = await fetch("/names/search/" + name);
             const json = await response.json();
             setEmployee(
                 {
@@ -19,9 +19,9 @@ function Search () {
                     amount: json.amount
                 }
             );
-            setError('');
+            setError("");
         } catch (error) {
-            setError('Name not found');
+            setError("Name not found");
         }
     }
     // Check name given to form is not empty and launch fetchUrl()
@@ -29,16 +29,16 @@ function Search () {
         if (name.length > 0) {
             fetchUrl();
         } else {
-            setError('Give Name');
+            setError("Give Name");
         }
     }
 
     return (
         <div>
             <form>
-                <input type='text' name='name' id='name' placeholder="Name to search.." value={ name } 
+                <input type="text" name="name" id="name" placeholder="Name to search.." value={ name } 
                        onChange={ (e) => setName(e.target.value) } />&nbsp;
-                <input type='button' className="search button" name='search' value='Search' onClick={ (e) =>  search(e)  } />
+                <input type="button" className="search button" name="search" value="Search" onClick={ (e) =>  search(e)  } />
             </form>
             {
                 employee.name.length > 0 && error.length === 0 ?

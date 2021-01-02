@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function ListNames(props) {
     const [names, setEmployees] = useState({});
-    const[error, setError] = useState('Fetching...');
+    const[error, setError] = useState("Fetching...");
 
     // Fetch list of names, sort names by given parameter
     const fetchUrl = async () => {
@@ -11,7 +11,7 @@ function ListNames(props) {
             console.log(response);
             const json = await response.json();
             setEmployees(json.names);
-            setError('');
+            setError("");
         } catch (error) {
             setError("Fetching data failed");
         }

@@ -1,5 +1,19 @@
 # dev-academy-2021 exercise - Name Application
 
+Names application made with Node.JS Express API and React UI.
+All results returned from API are in JSON format. Served data is read from the names.json file.
+
+API endpoints:
+/                                  Returns statuscode 200 and message "OK"
+/names/most-popular                Returns names most popular first
+/names/alphabetical-order          Returns names in alphabetical order
+/names/count                       Returns count of all names
+/names/search/<Name>               Returns name and amount of name given as a parameter
+
+You can start API and UI individually if you want, or use: "npm dev run" -command to start both at the same time. API answers from port 5000 and UI from port 3000.
+
+# Instructions
+
 Your task is to implement a name application. The application should have an user interface. The user interface can be either a web application or an api. (It can even contain both if you have enough time and enthusiasm.) 
 
 The user interface should provide at least the first one of the following requirements, but again, you’re allowed to implement them all.
