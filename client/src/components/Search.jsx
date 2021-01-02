@@ -11,7 +11,7 @@ function Search () {
     // Fetch JSON with given name as parameter
     const fetchUrl = async () => {
         try {
-            const response = await fetch('http://localhost:5000/names/search/' + name);
+            const response = await fetch('/names/search/' + name);
             const json = await response.json();
             setEmployee(
                 {

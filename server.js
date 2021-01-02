@@ -17,21 +17,21 @@ app.use((req, res, next) => {
 });
 
 // Require Route
-const api = require('./routes/routes');
+//const api = require("./routes/routes");
 // Configure app to use route
-app.use('/api/v1/', api);
+//app.use("/api/v1/", api);
 
 // This middleware informs the express application to serve our compiled React files
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "staging") {
+  app.use(express.static(path.join(__dirname, "client/build")));
 
-  app.get('*', function (req, res) {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  app.get("*", function (req, res) {
+      res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 };
 
 // Default endpoint, returns response code 200 if up and running
-app.get('/', (req, res, next) => {
+app.get("/", (req, res, next) => {
     return res.status(200).json({ error: false, message: "OK" })
 });
 
@@ -74,7 +74,7 @@ app.get("/names/count", (req, res, next) => {
 });
 
 // Endpoint to get name with given search parameter
-app.get('/names/search/:name', (req, res, next) => {
+app.get("/names/search/:name", (req, res, next) => {
   var name = req.params.name;
   // Makes first letter uppercase and others lowercase
   name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();

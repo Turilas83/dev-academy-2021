@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Count() {
   const [count, setCount] = useState({});
-  const [error, setError] = useState('Fetching...');
+  const [error, setError] = useState("Fetching...");
 
   // Fetch count of names
   const fetchUrl = async () => {
     try {
-      const response = await fetch("/api/v1/count");
+      const response = await fetch("/names/count");
       console.log(response);
       const json = await response.json();
       setCount(json.count);
