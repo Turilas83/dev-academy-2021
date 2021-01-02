@@ -1,13 +1,21 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
-
-// Gettt list of names as JSON
+const port = process.env.PORT || 5000;
+// Save list of names to variable employees as JSON
 let employees = require(__dirname + "/names.json")
 
 // Add CORS to allow cross-origin requests
 app.use(cors());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname+"../client/build/index.html"));
+});
 
 // Default endpoint, returns response code 200 if up and running
 app.get('/', (req, res, next) => {
@@ -64,7 +72,7 @@ app.get('/names/search/:name', (req, res, next) => {
     } 
   }
 });
-const port = process.env.PORT || 9000;
+
 app.listen(port, function(){
-  console.log("Server is running on port 9000");
+  console.log(`Listening on ${port}`);
 });
