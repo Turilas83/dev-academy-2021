@@ -5,6 +5,18 @@ body {
   background-color: #f1f6f9; 
 }
 
+.button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
 .footer {
   position: relative;
   bottom:0;
@@ -13,28 +25,6 @@ body {
   padding-top: 1.5rem;
   background-color: #14274e;
   color: white;
-}
-
-h3 {
-  font-weight: 200;
-  padding-bottom: 5%;
-  color: white;
-}
-
-.middle {
-  background-color: #9ba4b4;
-  display: block;
-}
-
-.tables {
-  display:flex;
-  flex-direction:row;
-  display: inline-flex;
-}
-
-.tables h2 {
-  color: black;
-  margin-right: 15%
 }
 
 .header {
@@ -57,6 +47,12 @@ h3 {
   padding-bottom: 3%;
 }
 
+h3 {
+  font-weight: 200;
+  padding-bottom: 5%;
+  color: white;
+}
+
 input[type=text], select {
   width: 50%;
   padding: 12px 20px;
@@ -67,22 +63,28 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
-.button {
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
+.middle {
+  background-color: #9ba4b4;
+  display: block;
 }
 
 .search {
-    background-color: white;
-    color: black;
-    border: 2px solid #e7e7e7;
-  }
-  
-.search:hover {background-color: #e7e7e7;}
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.search:hover {
+  background-color: #e7e7e7;
+}
+
+.tables {
+  display:flex;
+  flex-direction:row;
+  display: inline-flex;
+}
+
+.tables h2 {
+  color: black;
+  margin-right: 15%
+}

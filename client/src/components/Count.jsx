@@ -4,6 +4,7 @@ function Count() {
   const [count, setCount] = useState({});
   const [error, setError] = useState('Fetching...');
 
+  // Fetch count of names
   const fetchUrl = async () => {
     try {
       const response = await fetch("http://localhost:9000/names/count");
@@ -15,6 +16,7 @@ function Count() {
         setError("Fetching data failed");
     }
   }
+  // Check that there is no errors and return count of names
   useEffect( () => { fetchUrl() }, [] );
   if (error.length > 0) { return (<div>{ error }</div>) };
   return (

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-function ListNamesAlphabetical(props) {
+function ListNames(props) {
     const [names, setEmployees] = useState({});
     const[error, setError] = useState('Fetching...');
 
+    // Fettch list of names, sort names by given parameter
     const fetchUrl = async () => {
         try {
             const response = await fetch("http://localhost:9000/names/" + props.sort);
@@ -15,7 +16,7 @@ function ListNamesAlphabetical(props) {
             setError("Fetching data failed");
         }
     }
-
+    // Change value of heading depending on given parameter
     let heading;
 
     if (props.sort === "alphabetical-order") {
@@ -23,7 +24,7 @@ function ListNamesAlphabetical(props) {
     } else {
       heading = "Names in Top Order";
     }
-
+    // Fetch names JSON after render and return table with name and amount values
     useEffect( () => { fetchUrl() }, [] );
     if (error.length > 0) { return (<div>{ error }</div>) };
     return ( 
@@ -49,4 +50,4 @@ function ListNamesAlphabetical(props) {
     );
 }
 
-export default ListNamesAlphabetical;
+export default ListNames;

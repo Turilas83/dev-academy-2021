@@ -8,6 +8,7 @@ function Search () {
     const[error, setError] = useState('');
     const[name, setName] = useState('');
 
+    // Fetch JSON with given name as parameter
     const fetchUrl = async () => {
         try {
             const response = await fetch('http://localhost:9000/names/search/' + name);
@@ -23,7 +24,7 @@ function Search () {
             setError('Name not found');
         }
     }
-
+    // Check name given to form is not empty and launch fetchUrl()
     const search = (e) => {
         if (name.length > 0) {
             fetchUrl();
@@ -42,8 +43,7 @@ function Search () {
             {
                 employee.name.length > 0 && error.length === 0 ?
                 <div>
-                    <h3>{ employee.name }</h3>
-                    { employee.amount } <br />
+                    <h3>{ employee.amount } employees with name { employee.name } found!</h3>
                 </div>
                 : <p>{ error }</p>
             }          

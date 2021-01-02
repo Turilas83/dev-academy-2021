@@ -1,14 +1,15 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
 
+// Gettt list of names as JSON
 let employees = require(__dirname + "/names.json")
 
-app.use(bodyParser.urlencoded({extended: true}));
+// Add CORS to allow cross-origin requests
 app.use(cors());
 
+// Default endpoint, returns response code 200 if up and running
 app.get('/', (req, res, next) => {
     return res.status(200).json({ error: false, message: "OK" })
 });
@@ -22,7 +23,7 @@ app.get("/names/most-popular", (req, res, next) => {
   return res.status(200).json(employees);
 });
 
-// Endpoint to get names ordered by alphabetcal order
+// Endpoint to get names ordered by alphabetical order
 app.get("/names/alphabetical-order", (req, res, next) => {
   // sort by name
   employees.names.sort(function(a, b) {
@@ -53,16 +54,17 @@ app.get("/names/count", (req, res, next) => {
 
 // Endpoint to get name with given search parameter
 app.get('/names/search/:name', (req, res, next) => {
-  let name = req.params.name;
+  var name = req.params.name;
+  // Makes first letter uppercase and others lowercase
   name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-  for (var key of employees.names) {
-    
+  // Loop trough names and check if name matches with search parameter, if so return name and amount
+  for (var key of employees.names) { 
     if (key.name == name) {
       return res.status(200).json({ name: key.name, amount: key.amount });
-    }
+    } 
   }
 });
-
-app.listen(9000, function(){
+const port = process.env.PORT || 9000;
+app.listen(port, function(){
   console.log("Server is running on port 9000");
 });
