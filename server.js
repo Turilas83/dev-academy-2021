@@ -10,12 +10,20 @@ let employees = require(__dirname + "/names.json")
 // Add CORS to allow cross-origin requests
 app.use(cors());
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
-
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname+"client/build/index.html"));
+// This application level middleware prints incoming requests to the servers console
+app.use((req, res, next) => {
+    console.log(`Request_Endpoint: ${req.method} ${req.url}`);
+    next();
 });
+
+// This middleware informs the express application to serve our compiled React files
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', function (req, res) {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+};
 
 // Default endpoint, returns response code 200 if up and running
 app.get('/', (req, res, next) => {
