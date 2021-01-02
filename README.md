@@ -17,7 +17,7 @@ API endpoints:
 ***/names/count***                       
 > Returns count of all names
 
-***/names/search/<Name>***               
+***/names/search/"Name"***               
 > Returns name and amount of name given as a parameter
 
 You can start API and UI individually if you want, or use: "npm dev run" -command to start both at the same time. API answers from port 5000 and UI from port 3000.
