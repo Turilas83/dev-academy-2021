@@ -5,7 +5,7 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 5000;
 // Save list of names to variable employees as JSON
-let employees = require(__dirname + "/names.json")
+const employees = require(__dirname + "/names.json")
 
 // Add CORS to allow cross-origin requests
 app.use(cors());
