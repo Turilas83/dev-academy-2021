@@ -20,7 +20,11 @@ API endpoints:
 ***/names/search/"Name"***               
 > Returns name and amount of name given as a parameter
 
-You can start API and UI individually if you want, or use: "npm dev run" -command to start both at the same time. API answers from port 5000 and UI from port 3000.
+You can start API and UI individually if you want, or use: "npm run dev" -command to start both at the same time. API answers from port 5000 and UI from port 3000.
+
+1. Clone repository
+2. Run "npm install" inside both root and /client folder
+3. Start application from root folder with command "npm run dev"
 
 # Instructions
 
